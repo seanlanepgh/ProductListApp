@@ -40,7 +40,7 @@ var data = $.getJSON("/data/product.json", function(json) {
             var wasPriceValue = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP' }).format(
                 json.product_arr[i].was_price/100,
               );
-            wasPrice.innerText = wasPriceValue;
+            wasPrice.innerHTML += 'Was <s>'+wasPriceValue+'</s>';
             priceHolder.appendChild(wasPrice);
         } else {
             var wasPrice = document.createElement("br");

@@ -14,11 +14,11 @@
 		<title>ProductList.com</title>
 	</head>
 	<body>
+        <!-- Wrap to contain all page content-->
+        <div id="content"> 	
 		<header>
 			<h1>Office Essentials</h1>
 		</header>
-        <!-- Wrap to contain all page content-->
-        <div id="content"> 	
 			<div class="filterContainer">
 				<button class="filterButton">
 					Sort By Price

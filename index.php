@@ -11,6 +11,7 @@
 		<!-- Get jquery library -->
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
         <script type="text/javascript" src="/Javascript/data.js"></script>
+		<script type="text/javascript" src="/Javascript/filterButtons.js"></script>
 		<title>ProductList.com</title>
 	</head>
 	<body>
@@ -20,16 +21,16 @@
 			<h1>Office Essentials</h1>
 		</header>
 			<div class="filterContainer">
-				<button class="filterButton">
+				<button onclick="sortPrice()"class="filterButton" id="priceFilterButton">
 					Sort By Price
 				</button>   
-				<button class="filterButton">
+				<button onclick="sortReviews()"class="filterButton" id="reviewFilterButton">
 					Sort By Review
 				</button> 
-				<button class="filterButton">
+				<button onclick="sortName()" class="filterButton" id="nameFilterButton">
 					Sort By Name
 				</button> 
-				<button class="filterButton">
+				<button onclick="sortSavings()" class="filterButton" id="savingFilterButton">
 					Sort By Saving
 				</button> 
 			</div> 	

@@ -77,13 +77,10 @@ function showData(productData) {
     imgDiv.appendChild(img)
     productItem.appendChild(imgDiv);
 
-    var priceHolder = document.createElement("div");
-    priceHolder.setAttribute('class', 'priceHolder');
-
-    var name = document.createElement("p");
+    var name = document.createElement("h3");
     name.setAttribute('class', 'name');
     name.innerText = item.name
-    priceHolder.appendChild(name);
+    productItem.appendChild(name);
 
     var price = document.createElement("p");
     price.setAttribute('class', 'price');
@@ -91,7 +88,7 @@ function showData(productData) {
         item.price/100,
       );
     price.innerText = priceValue;
-    priceHolder.appendChild(price);
+    productItem.appendChild(price);
 
    if(((typeof(item.was_price) == "number" && item.was_price !== 0 ))){
         var wasPrice = document.createElement("p");
@@ -100,30 +97,29 @@ function showData(productData) {
             item.was_price/100,
           );
         wasPrice.innerHTML += 'Was <s>'+wasPriceValue+'</s>';
-        priceHolder.appendChild(wasPrice);
+        productItem.appendChild(wasPrice);
     } else {
         var wasPrice = document.createElement("br");
         wasPrice.setAttribute('class', 'wasPrice');
-        priceHolder.appendChild(wasPrice);
+        productItem.appendChild(wasPrice);
 
     }
     if((typeof(item.reviews) == "number" && item.reviews !== 0)){
         var reviewScore = document.createElement("p");
         reviewScore.setAttribute('class', 'reviewScore');
         reviewScore.innerText = item.reviews+'% Review Score';
-        priceHolder.appendChild(reviewScore);
+        productItem.appendChild(reviewScore);
     }
     else {
         var reviewScore = document.createElement("br");
         reviewScore.setAttribute('class', 'reviewScore');
-        priceHolder.appendChild(reviewScore);
+        productItem.appendChild(reviewScore);
     }
 
     var button = document.createElement("button");
     button.setAttribute('class','button');
     button.innerText= "Add To Basket";
-    priceHolder.appendChild(button);
-    productItem.appendChild(priceHolder);
+    productItem.appendChild(button);
     productList.appendChild(productItem);
     });
 };

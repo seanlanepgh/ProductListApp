@@ -1,11 +1,17 @@
 /*Header Style*/
 header{
-	/* height:150px; */
+	height:auto;
 	width:auto;
     display: inline-block;
 	text-align:center;
+    /* Tried image searching from the font to find correct font to match design
+    but normal process would be to ask UX Designer 
+    */ 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-header h1 {
+
+header p {
+    font-weight: normal;
 	float:left;
 	font-size:30px;
 	text-decoration:none;
@@ -17,6 +23,7 @@ body{
 	margin: 0;
     padding: 10px;
 }
+
 #content{
 	width:90%;
 	z-index:0;
@@ -24,83 +31,102 @@ body{
     padding-right: 30px;
 }
 
-/*End Popup Styles */
 /*Styles the list of products/items*/
 .products{
     display: grid;                          /* Use grid type layout to get columns */
     grid-template-columns: 1fr 1fr 1fr 1fr; /* Proportions of the columns */
-    gap: 1rem;   
+    gap: 0.5rem;   
 }
 
 .products:after {
     content: "";
     display: table;
     clear: both;
-  }
+}
+
 .item {
     border: 2px solid lightgray;
-    padding: 0.25em;
+    padding: 0.5em;
     float: left;
     width: auto;
 }
+
 .product-image{
-    /* display: flex; */
     width:auto;
-    /* height:300px; */
     overflow: hidden;
     justify-content: center;
     align-items: center;
 }
+
 .product-image >img {
    width: 100%;
    height: auto;
 }
+
+.item h3{
+    margin-block-start: 0em;
+    margin-block-end: 0.25em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+	text-decoration:none;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.item br{
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+}
 .item p{
 	margin:0;
-	font-weight:bold;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    font-weight:normal;
 	text-decoration:none;
     text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.name{
-    text-align: center;
-}
+
 .wasPrice {
     color:rgba(255,31,31,255);
-    text-align: center;
 }
+
 .reviewScore {
-    color:rgba(0,102,0,255);
-    
+    color:rgba(0,102,0,255);  
 }
+
 .filterButton {
 	text-decoration:none;
-    text-size-adjust: 15px;
+    font-weight: normal;
+    font-size:20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 	display:inline-block;
     border: 2px solid lightgray;
     background-color: white;
     color: black;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
     width: auto;
 }
 
 .filterContainer {
     display: grid;                          /* Use grid type layout to get columns */
     grid-template-columns: 1fr 1fr 1fr 1fr; /* Proportions of the columns */
-    gap: 20px;   
-    /* margin-bottom: 2.5px; */
+    gap: 0.5em;   
+}
 
-  }
-  .filterContainer:after {
+.filterContainer:after {
     content: "";
     display: table;
     clear: both;
-  }
+}
 
 .button{
 	width:100%;
 	background:rgba(255,102,0,255);
 	border:0;
 	padding:4%;
-    margin-bottom: 0.5em;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
 	font-size:100%;
 	color:white;
 	cursor:pointer;
@@ -113,9 +139,6 @@ body{
 
 /* End Styles the list of products/items*/
 
-.priceHolder{
-  
-}
 
 @media(max-width:900px){
     .products{
@@ -123,11 +146,12 @@ body{
         grid-template-columns: 1fr 1fr; /* Proportions of the columns */
         gap: 1rem;   
     }
+    
     .filterContainer {
 
         display: grid;                          /* Use grid type layout to get columns */
         grid-template-columns: 1fr 1fr; /* Proportions of the columns */
-        gap: 20px;   
+        gap: 0.5em;   
         /* margin-bottom: 2.5px; */
     
       }
@@ -139,14 +163,15 @@ body{
         grid-template-columns: 1fr 1fr; /* Proportions of the columns */
         gap: 1rem;   
     }
+
     .filterContainer {
 
         display: grid;                          /* Use grid type layout to get columns */
         grid-template-columns: 1fr 1fr ; /* Proportions of the columns */
-        gap: 20px;   
+        gap: 0.5em;   
         /* margin-bottom: 2.5px; */
     
-      }
+    }
 }
 
 @media (max-width:500px){
@@ -156,14 +181,16 @@ body{
         grid-template-columns: 1fr; /* Proportions of the columns */
         gap: 1rem;   
     }
+
     .filterContainer {
 
         display: grid;                          /* Use grid type layout to get columns */
         grid-template-columns: 1fr; /* Proportions of the columns */
-        gap: 20px;   
+        gap: 0.5em;   
         /* margin-bottom: 2.5px; */
     
     }
+
     .item {
         float: left;
         width: auto;
@@ -178,10 +205,11 @@ body{
         justify-content: center;
         align-items: center;
     }
+
     .product-image >img {
         max-width: 100%;
         width: 400px;
-     }
+    }
 
 }
 
@@ -192,14 +220,16 @@ body{
         grid-template-columns: 1fr; /* Proportions of the columns */
         gap: 1rem;   
     }
+
     .filterContainer {
 
         display: grid;                          /* Use grid type layout to get columns */
         grid-template-columns: 1fr; /* Proportions of the columns */
-        gap: 20px;   
+        gap: 0.5em;   
         /* margin-bottom: 2.5px; */
     
     }
+
     .item {
         float: left;
         width: auto;
@@ -214,9 +244,9 @@ body{
         justify-content: center;
         align-items: center;
     }
+
     .product-image >img {
         max-width: 100%;
         width: 400px;
-     }
-
+    }
 }

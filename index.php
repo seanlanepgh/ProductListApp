@@ -18,7 +18,7 @@
         <!-- Wrap to contain all page content-->
         <div id="content"> 	
 		<header>
-			<h1>Office Essentials</h1>
+			<p>Office Essentials</p>
 		</header>
 			<div class="filterContainer">
 				<button onclick="sortPrice()"class="filterButton" id="priceFilterButton">

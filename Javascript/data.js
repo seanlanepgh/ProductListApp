@@ -1,51 +1,44 @@
 var data = $.getJSON("/data/product.json", function(json) {
-    console.log(json); // this will show the info it in firebug console
     var productList = document.getElementById('products');
-    var li = document.createElement("div");
-    li.setAttribute('class', 'item')
-    li.setAttribute('display', 'inline-block')
-
     for (var i = 0; i < json.product_arr.length; i++) {
-        var li = document.createElement("div");
-        li.setAttribute('class', 'item');
-        li.setAttribute('display', 'inline-block');
+        var productItem = document.createElement("div");
+        productItem.setAttribute('class', 'item');
+        productItem.setAttribute('display', 'inline-block');
         var img = document.createElement("img");
         img.setAttribute('src', '/img/'+json.product_arr[i].img+'.jpg');
         img.setAttribute('object-fit','contain');
-        li.appendChild(img);
+        productItem.appendChild(img);
         var imgDiv = document.createElement("div");
         imgDiv.setAttribute('class', 'product-image')
         imgDiv.appendChild(img)
-        li.appendChild(imgDiv);
+        productItem.appendChild(imgDiv);
 
-        var priceHolder = document.createElement("div");
-        priceHolder.setAttribute('class', 'priceHolder');
-
-        var name = document.createElement("p");
+        var name = document.createElement("h3");
         name.setAttribute('class', 'name');
+        name.setAttribute('fontWeight', 'bold');
         name.innerText = json.product_arr[i].name
-        priceHolder.appendChild(name);
+        productItem.appendChild(name);
 
         var price = document.createElement("p");
         price.setAttribute('class', 'price');
         var priceValue = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP' }).format(
             json.product_arr[i].price/100,
-          );
+        );
         price.innerText = priceValue;
-        priceHolder.appendChild(price);
+        productItem.appendChild(price);
 
-       if(((typeof(json.product_arr[i].was_price) == "number"))){
+        if(((typeof(json.product_arr[i].was_price) == "number"))){
             var wasPrice = document.createElement("p");
             wasPrice.setAttribute('class', 'wasPrice');
             var wasPriceValue = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP' }).format(
                 json.product_arr[i].was_price/100,
-              );
+            );
             wasPrice.innerHTML += 'Was <s>'+wasPriceValue+'</s>';
-            priceHolder.appendChild(wasPrice);
+            productItem.appendChild(wasPrice);
         } else {
             var wasPrice = document.createElement("br");
             wasPrice.setAttribute('class', 'wasPrice');
-            priceHolder.appendChild(wasPrice);
+            productItem.appendChild(wasPrice);
 
         }
 
@@ -53,22 +46,19 @@ var data = $.getJSON("/data/product.json", function(json) {
             var reviewScore = document.createElement("p");
             reviewScore.setAttribute('class', 'reviewScore');
             reviewScore.innerText = json.product_arr[i].reviews+'% Review Score';
-            priceHolder.appendChild(reviewScore);
+            productItem.appendChild(reviewScore);
         }
         else {
             var reviewScore = document.createElement("br");
             reviewScore.setAttribute('class', 'reviewScore');
-            priceHolder.appendChild(reviewScore);
+            productItem.appendChild(reviewScore);
         }
 
         var button = document.createElement("button");
         button.setAttribute('class','button');
         button.innerText= "Add To Basket";
-        priceHolder.appendChild(button);
-        li.appendChild(priceHolder);
-        productList.appendChild(li);
+        productItem.appendChild(button);
+        productList.appendChild(productItem);
 
     }
-    console.log(json)
 });
-

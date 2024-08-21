@@ -2,14 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Resources\ProductListResource;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    //
-    public function index(Request $request)
+    public function index()
     {
-        return $products = Product::where('category', "Office")->get();
+        $products = Product::query()
+            ->where('published', '=', 1)
+            ->orderBy('updated_at', 'desc')
+            ->paginate(12);
+        return view('product.index', [
+            'products' => $products
+        ]);
+    }
+
+    public function view(Product $product)
+    {
+        return view('product.view', ['product' => $product]);
     }
 }
+

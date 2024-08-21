@@ -1,47 +1,34 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
-/**
- * Class Product
- * 
- * @property int $product_id
- * @property string|null $product_name
- * @property string|null $category
- * @property float|null $price
- * @property float|null $was_price
- * @property int|null $reviews
- * @property int|null $img
- *
- * @package App\Models
- */
 class Product extends Model
 {
-	protected $table = 'products';
-	protected $primaryKey = 'product_id';
-	public $incrementing = false;
-	public $timestamps = false;
+    use HasFactory;
+    use HasSlug;
+    use SoftDeletes;
 
-	protected $casts = [
-		'product_id' => 'int',
-		'price' => 'float',
-		'was_price' => 'float',
-		'reviews' => 'int',
-		'img' => 'int'
-	];
 
-	protected $fillable = [
-		'product_name',
-		'category',
-		'price',
-		'was_price',
-		'reviews',
-		'img'
-	];
+    protected $fillable = ['title','price', 'image','category','price','was_price','reviews', 'published', 'created_by', 'updated_by'];
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
